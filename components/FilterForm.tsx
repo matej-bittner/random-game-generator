@@ -1,6 +1,6 @@
 "use client";
 
-import { UseFormReturn } from "react-hook-form";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,58 +27,30 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import ErrorCard from "@/components/ErrorCard";
-import { Genre } from "@/types";
+import { FilterFormProps, Genre } from "@/types";
 import { getAllGenres } from "@/actions/genres";
-import { useEffect, useState } from "react";
-// const genres = [
-//   { label: "English", value: "en" },
-//   { label: "French", value: "fr" },
-//   { label: "German", value: "de" },
-//   { label: "Spanish", value: "es" },
-//   { label: "Portuguese", value: "pt" },
-//   { label: "Russian", value: "ru" },
-//   { label: "Japanese", value: "ja" },
-//   { label: "Korean", value: "ko" },
-//   { label: "Chinese", value: "zh" },
-// ] as const;
 
-interface FilterFormProps {
-  onSubmit: (values: {
-    genre: string;
-    goodRated: boolean;
-    releaseFrom: number;
-    releaseTo: number;
-  }) => void;
-  error?: string;
-  isPending: boolean;
-  genres?: Genre[];
-  form: UseFormReturn<{
-    genre: string;
-    goodRated: boolean;
-    releaseFrom: number;
-    releaseTo: number;
-  }>;
-}
 export function FilterForm({
   onSubmit,
   error,
   form,
   isPending,
+  genres,
 }: FilterFormProps) {
-  const [genres, setGenres] = useState<Genre[] | undefined>([]);
-  const getGenres = () => {
-    getAllGenres()
-      .then((data) => {
-        setGenres(data);
-      })
-      .catch(() => {
-        // setError("Něco se nepovedlo");
-      });
-  };
-
-  useEffect(() => {
-    getGenres();
-  }, []);
+  // const [genres, setGenres] = useState<Genre[] | undefined>([]);
+  // const getGenres = () => {
+  //   getAllGenres()
+  //     .then((data) => {
+  //       setGenres(data);
+  //     })
+  //     .catch(() => {
+  //       // setError("Něco se nepovedlo");
+  //     });
+  // };
+  //
+  // useEffect(() => {
+  //   getGenres();
+  // }, []);
 
   return (
     <Form {...form}>
@@ -108,7 +80,7 @@ export function FilterForm({
                             >
                               {field.value
                                 ? genres.find(
-                                    (genre) => genre.slug === field.value,
+                                    (genre) => genre.id === field.value,
                                   )?.name
                                 : "Select Genre"}
                               <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 text-black " />
@@ -130,13 +102,13 @@ export function FilterForm({
                                     value={genre.name}
                                     key={genre.id}
                                     onSelect={() => {
-                                      form.setValue("genre", genre.slug);
+                                      form.setValue("genre", genre.id);
                                     }}
                                   >
                                     <Check
                                       className={cn(
                                         "mr-2 h-4 w-4",
-                                        genre.slug === field.value
+                                        genre.id === field.value
                                           ? "opacity-100"
                                           : "opacity-0",
                                       )}
@@ -172,7 +144,8 @@ export function FilterForm({
                         htmlFor="terms"
                         className="text-sm  font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                       >
-                        Only Good Rated Games
+                        Only Good Rated Games{" "}
+                        <span className="text-xs pl-1">(rating over 80)</span>
                       </label>
                     </div>
                   </FormControl>
@@ -190,7 +163,7 @@ export function FilterForm({
                   <FormControl>
                     <Input
                       disabled={isPending}
-                      placeholder="Release From"
+                      placeholder="Release From*"
                       type="number"
                       className="form-field w-[150px] placeholder:text-black g-transparent focus-visible:ring-offset-0 focus-visible:ring-0"
                       onChange={(event) => field.onChange(+event.target.value)}
@@ -209,7 +182,7 @@ export function FilterForm({
                   <FormControl>
                     <Input
                       disabled={isPending}
-                      placeholder="Release To"
+                      placeholder="Release To*"
                       type="number"
                       className="form-field w-[150px] placeholder:text-black g-transparent focus-visible:ring-offset-0 focus-visible:ring-0"
                       onChange={(event) => field.onChange(+event.target.value)}

@@ -26,3 +26,22 @@ export const timestampToYear = (timestamp: number) => {
 
   return yearFromTimestamp;
 };
+
+export const FetchApi = async (body: string, url: string) => {
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Client-ID": `${process.env.API_CLIENT_ID}`,
+      Authorization: `Bearer ${process.env.API_TOKEN}`,
+    },
+    next: {
+      revalidate: 60 * 60 * 24, //24 hours
+    },
+    body: body,
+  };
+  const response = await fetch(url, options);
+
+  const data = await response.json();
+  return data;
+};

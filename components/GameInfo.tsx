@@ -1,8 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { Genre, SingleGame } from "@/types";
 
-const GameInfo = () => {
+const GameInfo = ({
+  data,
+  matchingGenres,
+}: {
+  data: SingleGame | undefined;
+  matchingGenres: Genre[] | undefined;
+}) => {
   const [openInfo, setOpenInfo] = useState(false);
   return (
     <div className="w-full h-full absolute ">
@@ -15,10 +22,31 @@ const GameInfo = () => {
         onClick={() => setOpenInfo(!openInfo)}
       />
       <div
-        className={`w-full bg-sky-300 h-full px-2 pt-2 flex flex-col items-center ${!openInfo && "hidden"}`}
+        className={`w-full bg-sky-300 h-full px-4 pt-2 flex gap-1 flex-col items-center ${!openInfo && "hidden"}`}
       >
-        <h2 className="font-semibold text-lg">Assassin's Creed Valhalla</h2>
-        <p>2022</p>
+        <h2 className="font-semibold text-lg text-center">
+          {data?.name || "Uncharted: Legacy of Thieves Collection"}
+          <span className="drop-shadow-md text-sm pl-1">
+            ({data?.releaseYear || "2022 "})
+          </span>
+        </h2>
+        <p className="self-center text-center max-w-[90%] mx-auto text-sm">
+          {matchingGenres?.map((genre, i) => {
+            if (i > 3) return null;
+            return (
+              <span key={i}>
+                {genre.name}
+                {i + 1 < matchingGenres?.length && i < 3 && " / "}
+              </span>
+            );
+          }) || "Action / Adventure"}
+        </p>
+        {/*<p>{data?.releaseYear || "2022"}</p>*/}
+        <p className="text-left overflow-auto mb-20 text-sm">
+          {data?.summary ||
+            data?.storyline ||
+            "Uncharted: Legacy of Thieves Collection is a remastered collection of two games in the Uncharted saga: Uncharted 4: A Thief’s End and Uncharted: The Lost Legacy. This includes multiple graphical options with varying framerates and resolutions, faster load times and DualSense haptic feedback and adaptive triggers."}
+        </p>
       </div>
     </div>
   );

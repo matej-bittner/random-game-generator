@@ -19,10 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col flex-1">
-          <Toaster />
-          {children}
-        </div>
+        <Toaster />
+        <div className="flex flex-col flex-1 min-w-[330px]">{children}</div>
       </body>
     </html>
   );

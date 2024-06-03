@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,9 +25,8 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-import ErrorCard from "@/components/ErrorCard";
-import { FilterFormProps, Genre } from "@/types";
-import { getAllGenres } from "@/actions/genres";
+import ErrorCard from "@/components/page-top/ErrorCard";
+import { FilterFormProps } from "@/types";
 
 export function FilterForm({
   onSubmit,
@@ -37,28 +35,13 @@ export function FilterForm({
   isPending,
   genres,
 }: FilterFormProps) {
-  // const [genres, setGenres] = useState<Genre[] | undefined>([]);
-  // const getGenres = () => {
-  //   getAllGenres()
-  //     .then((data) => {
-  //       setGenres(data);
-  //     })
-  //     .catch(() => {
-  //       // setError("Něco se nepovedlo");
-  //     });
-  // };
-  //
-  // useEffect(() => {
-  //   getGenres();
-  // }, []);
-
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4 items-center flex flex-col"
+        className="space-y-3 items-center flex flex-col px-6 2xl:absolute 2xl:w-full 2xl:left-0 2xl:flex-row 2xl:space-y-0 2xl:items-start 2xl:gap-8 2xl:justify-center"
       >
-        <div className="gap-4 items-center flex max-md:flex-col w-full md:items-start max-w-[800px] md:justify-between">
+        <div className="gap-4 items-center flex max-md:flex-col w-full md:items-start max-w-[800px] md:justify-between ">
           <div className="flex flex-col max-md:items-center gap-3 xl:gap-5 max-md:w-[80%] md:w-1/2 ">
             <FormField
               control={form.control}
@@ -197,7 +180,7 @@ export function FilterForm({
         <ErrorCard message={error} />
         <Button
           type="submit"
-          className="bg-main-black text-lg rounded-xl md:absolute bottom-[-60px]"
+          className="bg-main-green text-lg rounded-xl hover:bg-main-green/90 transition "
           size="lg"
           disabled={isPending}
         >

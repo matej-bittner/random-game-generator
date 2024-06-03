@@ -53,10 +53,11 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         main: {
-          orange: "#FFA338",
-          "orange-light": "#FFC763",
-          lime: "#E8E172",
+          red: "#8C1F28",
+          "red-dark": "#591C21",
+          green: "#044040",
           black: "#0D0D0D",
+          white: "#F2F2F2",
         },
       },
       borderRadius: {
@@ -78,11 +79,22 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        // "accordion-down": {
+        //   from: { height: "0" },
+        //   to: { height: "var(--radix-accordion-content-height)" },
+        // },
+        // "accordion-up": {
+        //   from: { height: "var(--radix-accordion-content-height)" },
+        //   to: { height: "0" },
+        // },
       },
       animation: {
+        // "accordion-down": "accordion-down 0.2s ease-out",
+        // "accordion-up": "accordion-up 0.2s ease-out",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "border-spin": "border-spin 4s linear infinite",
+        "border-spin": "border-spin 3s linear infinite",
+        "border-spin-fast": "border-spin 2s linear infinite",
       },
     },
   },

@@ -21,6 +21,7 @@ export type SingleGame = {
   total_rating_count: number;
   imageUrl: string;
   genres: number[];
+  error?: string;
 };
 
 export type FilterFormProps = {

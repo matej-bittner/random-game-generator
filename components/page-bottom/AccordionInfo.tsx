@@ -28,7 +28,9 @@ export function AccordionInfo() {
         </div>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger>How works "Find Best Price" ?</AccordionTrigger>
+        <AccordionTrigger>
+          How works &quot;Find Best Price&quot; ?
+        </AccordionTrigger>
         <AccordionContent>
           On click you will be redirected to G2A.com where you can Buy Cheap
           Games. It is the largest global marketplace for digital entertainment

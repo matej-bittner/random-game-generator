@@ -29,7 +29,7 @@ const GameCard = ({
           >
             <a
               target="_blank"
-              href={`https://www.g2a.com/search?gname=reflink-dd9b3f79a8&query=${data?.slug || "uncharted-legacy-of-thieves-collection"}`}
+              href={`https://www.g2a.com/search?query=${data?.slug || "uncharted-legacy-of-thieves-collection"}&ref=fc26a8ed9b`}
             >
               Find Best Price
             </a>
@@ -64,7 +64,7 @@ const GameCard = ({
         <Button className="w-fit mx-auto rounded-xl" size="md">
           <a
             target="_blank"
-            href={`https://www.g2a.com/search?gname=reflink-dd9b3f79a8&query=${data?.slug || "uncharted-legacy-of-thieves-collection"}`}
+            href={`https://www.g2a.com/search?query=${data?.slug || "uncharted-legacy-of-thieves-collection"}&ref=fc26a8ed9b`}
           >
             Find Best Price
           </a>

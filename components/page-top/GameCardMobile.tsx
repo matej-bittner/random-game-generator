@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Genre, SingleGame } from "@/types";
 import { motion, AnimatePresence } from "framer-motion";
-const GameInfo = ({
+const GameCardMobile = ({
   data,
   matchingGenres,
 }: {
@@ -61,4 +61,4 @@ const GameInfo = ({
   );
 };
 
-export default GameInfo;
+export default GameCardMobile;

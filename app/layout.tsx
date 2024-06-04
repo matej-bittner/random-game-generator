@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Toaster />
-        <div className="flex flex-col flex-1 min-w-[330px]">{children}</div>
+        <div className="flex flex-col flex-1 min-w-[330px]">
+          {children}
+          <SpeedInsights />
+        </div>
       </body>
     </html>
   );

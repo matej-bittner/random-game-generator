@@ -3,7 +3,7 @@
 import { FetchApi, timestampToYear } from "@/lib/utils";
 
 export const RandomGame = async () => {
-  let mainBody = `fields id;where cover!=null & total_rating!=null & total_rating_count > 0 ;limit 100;`;
+  let mainBody = `fields id;where cover!=null & genres!=null & total_rating!=null & total_rating_count > 0 ;limit 100;`;
   const data = await FetchApi(mainBody, "https://api.igdb.com/v4/games");
 
   const randomIndex = Math.floor(Math.random() * data.length); // Get a random index

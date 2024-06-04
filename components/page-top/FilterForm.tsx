@@ -27,6 +27,8 @@ import {
 } from "@/components/ui/command";
 import ErrorCard from "@/components/page-top/ErrorCard";
 import { FilterFormProps } from "@/types";
+import { AdvanceFilter } from "@/components/page-top/AdvanceFilter";
+import React from "react";
 
 export function FilterForm({
   onSubmit,
@@ -178,14 +180,18 @@ export function FilterForm({
           </div>
         </div>
         <ErrorCard message={error} />
-        <Button
-          type="submit"
-          className="bg-main-green text-lg rounded-xl hover:bg-main-green/90 transition "
-          size="lg"
-          disabled={isPending}
-        >
-          Find Games
-        </Button>
+        <div className="flex flex-col gap-[1px] 2xl:gap-2 items-center relative">
+          <Button
+            type="submit"
+            className="bg-main-green text-lg rounded-xl hover:bg-main-green/90 transition "
+            size="lg"
+            disabled={isPending}
+          >
+            Find Games
+          </Button>
+          <p className="md:hidden font-medium">Or</p>
+          <AdvanceFilter onSubmit={onSubmit} isPending={isPending} />
+        </div>
       </form>
     </Form>
   );

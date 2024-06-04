@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import GameInfo from "@/components/page-top/GameInfo";
+import GameCardMobile from "@/components/page-top/GameCardMobile";
 import { Genre, SingleGame } from "@/types";
 
 const GameCard = ({
@@ -22,14 +22,14 @@ const GameCard = ({
           className="object-cover object-top"
         />
         <div className="w-full h-full z-10 flex justify-center md:hidden ">
-          <GameInfo data={data} matchingGenres={matchingGenres} />
+          <GameCardMobile data={data} matchingGenres={matchingGenres} />
           <Button
             className="w-fit mx-auto rounded-xl self-end text-lg bg-main-green/80 border-black/50 border-2 hover:bg-main-green/60 sm:h-11 sm:px-8 z-10"
             size="default"
           >
             <a
               target="_blank"
-              href={`https://www.g2a.com/search?query=${data?.slug || "uncharted-legacy-of-thieves-collection"}&ref=fc26a8ed9b`}
+              href={`https://www.g2a.com/search?query=${data?.slug || "uncharted-legacy-of-thieves-collection"}&gtag=fc26a8ed9b`}
             >
               Find Best Price
             </a>
@@ -64,7 +64,7 @@ const GameCard = ({
         <Button className="w-fit mx-auto rounded-xl" size="md">
           <a
             target="_blank"
-            href={`https://www.g2a.com/search?query=${data?.slug || "uncharted-legacy-of-thieves-collection"}&ref=fc26a8ed9b`}
+            href={`https://www.g2a.com/search?query=${data?.slug || "uncharted-legacy-of-thieves-collection"}&gtag=fc26a8ed9b`}
           >
             Find Best Price
           </a>

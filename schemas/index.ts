@@ -17,3 +17,12 @@ export const SearchSchema = z.object({
   genre: z.number().optional(),
   goodRated: z.boolean(),
 });
+export const AdvanceSearchSchema = z.object({
+  mood: z.number().min(0),
+  platform: z.number().min(0),
+  release: z.number().min(0),
+  rating: z.number().min(0),
+  game_mode: z.number().min(0),
+  sequels: z.number().min(0),
+  action: z.string().optional(),
+});

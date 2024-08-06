@@ -28,7 +28,7 @@ import {
 import ErrorCard from "@/components/page-top/ErrorCard";
 import { FilterFormProps } from "@/types";
 import { AdvanceFilter } from "@/components/page-top/AdvanceFilter";
-import React from "react";
+import React, { useState } from "react";
 
 export function FilterForm({
   onSubmit,
